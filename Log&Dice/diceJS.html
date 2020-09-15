@@ -1,0 +1,17 @@
+<center>
+<script>
+var players = ['Marshal','Johnny','Cary','Leo'];
+var highscore = 0;
+for(var i=0; i < players.length;i++){
+	var rand = Math.ceil(Math.random()*10);
+	document.write(players[i]+'&nbsp'+rand+'<br/>');
+	if(rand > highscore){
+		highscore = rand;
+		var winner = players[i];
+	}else if(rand == highscore){
+		winner += ' and '+players[i];
+	}
+}
+document.write('The winner is <b style=\'color:red;\'>'+winner+'<b>');
+</script>
+</center>

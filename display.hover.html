@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hover+display的综合实战</title>
+<style type="text/css">
+* {
+        margin: 0px;
+        padding: 0px;
+        font-family: microsoft yahei, Arial, Helvetica, sans-serif;
+}
+ul.nav, ul.nav ul {
+        list-style-type: none;
+        float: left;
+        border: 1px solid #069;
+}
+ul.nav {
+        height: 45px;
+        background: url(nav-bg2.png) repeat-x;
+}
+ul.nav ul {
+        background-color: #095fad;
+}
+
+ul.nav li {
+        float: left;
+        width: 8em;
+}
+ul.nav li ul {
+        width: 8em;
+        display: none;
+}
+.nav li:hover ul {
+        display: block;
+}
+ul.nav a {
+        display: block;
+        padding: 0.7em 0.5em;
+        text-align: center;
+        color: #FFF;
+        text-decoration: none;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #069;
+}
+ul.nav li li a {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #069;
+        border-left: 0px;
+        border-right: 0px;
+        font-size:12px;
+}
+ul.nav li:last-child a {
+        border-right: 0px;
+        border-bottom: 0px;
+}
+ul a:hover, ul.nav li ul a:hover {
+        font-weight: bold;
+        background-color: #095fad;
+        border-left: 1px solid #63F;
+        border-right: 1px solid #CCC;
+}
+</style>
+</head>
+
+<body>
+<ul class="nav">
+  <li><a href="#">网站首页</a></li>
+  <li><a href="#">关于我们</a>
+    <ul>
+      <li><a href="#">公司简介</a></li>
+      <li><a href="#">企业文化</a></li>
+    </ul>
+  </li>
+  <li><a href="#">产品中心</a>
+    <ul>
+      <li><a href="#">SEO技术</a></li>
+      <li><a href="#">PHP技术</a></li>
+      <li><a href="#">HTML技术</a></li>
+      <li><a href="#">JS技术</a></li>
+    </ul>
+  </li>
+  <li><a href="#">新闻动态</a>
+    <ul>
+      <li><a href="#">公司新闻</a></li>
+      <li><a href="#">行业新闻</a></li>
+      <li><a href="#">世界新闻</a></li>
+    </ul>
+  </li>
+</ul>
+</body>
+</html>

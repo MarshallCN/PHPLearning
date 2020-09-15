@@ -1,0 +1,94 @@
+<html>
+<head>
+<title></title>
+<style>
+img{
+	width:40px;
+	height:40px;
+}
+</style>
+</head>
+<body>
+	<p contenteditable='true' id='inp' style='height:5%;' onfocus='setInterval(chan,200);' style="ime-mode:disabled">>_</p>
+	<hr/>
+	<div id='nav'>
+		<div id='t' style='border:2px solid black;height:550px;width:1280px;background-color:#f8f8e0;position:absolute;margin-left:20px;padding-left:10px;padding-top:10px;'>
+			<img id='pic' src='tank.png' style='margin-left:20px;margin-top:10px;'/>
+			
+		</div><span id='dans'></span>
+	</div>
+	<script>
+	var distance = 0;
+	dan_set = false;
+	function chan(){
+		var inp = document.getElementById('inp').innerHTML.toUpperCase();
+		var toppx = parseInt(document.getElementById('pic').style.marginTop);
+		var leftpx = parseInt(document.getElementById('pic').style.marginLeft);
+		if(inp[inp.length-1]=='D'){
+			if(leftpx < 1250){
+				leftpx += 10;
+			}
+		}
+		if(inp[inp.length-1]=='A'){
+			if(leftpx > 10){
+				leftpx -= 10;
+			}
+		}
+		document.getElementById('pic').style.marginLeft = leftpx;
+		if(inp[inp.length-1]=='W'){
+			if(toppx > 10){
+				toppx -= 10;
+			}
+		}
+		if(inp[inp.length-1]=='S'){
+			if(toppx < 520){
+				toppx += 10;
+			}
+		}
+		document.getElementById('pic').style.marginTop = toppx;
+		
+		
+		var angle = parseInt(document.getElementById('pic').style.webkitTransform.substring(7));
+		if(isNaN(angle)){
+			angle = 0;
+		}
+		if(inp[inp.length-1]=='Q'){
+			angle -= 45
+		}
+		if(inp[inp.length-1]=='E'){
+			angle += 45
+		}
+		document.getElementById('pic').style.transform = "rotate("+angle+"deg)";
+		document.getElementById('pic').style.webkitTransform = "rotate("+angle+"deg)";
+		var dans = document.getElementById('dans');
+		if(inp[inp.length-1]=='R'){
+			if(!document.getElementById('dan')){
+				var dan = document.createElement("img");
+				dan.setAttribute('id','dan')
+				dan.setAttribute('src','tank.gif');
+				dans.appendChild(dan);
+			}
+		}
+		if(document.getElementById('dan')){
+			var dan1=document.getElementById('dan');
+			dan1.style.height = '10px'
+			dan1.style.position = 'absolute';
+			dan1.style.marginTop = 15;
+			if(angle == 0 || angle == 360){
+				distance += 30;
+				var widSpace = parseInt( 1200 - leftpx );
+			}else if(angle == 180 || angle == -180){
+				distance -= 30;
+				var widSpace = leftpx;
+			}
+			dan1.style.webkitTransform='translate('+distance+'px,0px)';
+			if(distance > widSpace){
+					dans.removeChild(dans.lastChild);
+					distance = 0;
+			}
+		}
+		document.getElementById('inp').innerHTML = '';
+	}
+	</script>
+</body>
+<html>
